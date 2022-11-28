@@ -47,63 +47,57 @@ y = [-3.0, -2.0, 4.0, 0.0]      #
 #-------------------------------#
 
 
-# Vetores dos pontos não tabelados -#
-                                    #
-xx = []                             #
-yy = []                             #
-                                    #
-#-----------------------------------#
-
-
 # Valor do ponto a ser interpolado -------------------------#
                                                             #
 v = 2.5                                                     #
                                                             #
 p = difdiv(x, y, v)                                         #
                                                             #
-print("VALOR DE g(x) NO PONTO 2.5:")                        #
+print("   VALOR DE g(x) NO PONTO 2.5:")                     #
                                                             #
-print("g({}) = {}".format(v, p))                            #
+print("      g({}) = {}".format(v, p))                      #
                                                             #
 #-----------------------------------------------------------#
 
 
 # Valores dos pontos tabelados -----------------------------#
                                                             #
-print("\nVALORES DOS PONTOS TABELADOS:")                    #
+print("\n   VALORES DOS PONTOS TABELADOS:")                 #
                                                             #
 for i in range(0, 4):                                       #
     v = i                                                   #
     p = difdiv(x, y, v)                                     #
-    print("g({}) = {}".format(v, p))                        #
+    print("      g({}) = {}".format(v, p))                  #
                                                             #
 #-----------------------------------------------------------#
 
 
-# Valores de outros pontos ---------------------------------#
-                                                            #
-print("\nVALORES DE OUTROS PONTOS:")                        #
-                                                            #
-for i in range(-10, 11):                                    #
-    v = i                                                   #
-    xx.append(v)                                            #
-    p = difdiv(x, y, v)                                     #
-    yy.append(p)                                            #
-    print("g({}) = {}".format(v, p))                        #
-                                                            #
-#-----------------------------------------------------------#
+# Valores de outros pontos ----------------------------------------------------#
+                                                                               #
+print("\n   VALORES DE OUTROS PONTOS:")                                        #
+                                                                               #
+v = [0.0, 0.25, 0.50, 0.75, 1.0, 1.25, 1.50, 1.75, 2.0, 2.25, 2.50, 2.75, 3.0] #
+p = []                                                                         #
+                                                                               #
+for num in v:                                                                  #
+    p.append(difdiv(x, y, num))                                                #
+                                                                               #
+for i in range(len(v)):                                                        #
+    print("      g({}) = {}".format(v[i], p[i]))                               #
+                                                                               #
+#------------------------------------------------------------------------------#
 
 
 '''
 
 #   OBS: O trecho a seguir fará o plot do gráfico com base nos pontos calculados
-# no "for" da linha 87. Para realizar esse plot, primeiro é necessário instalar 
-# a biblioteca "matplotlib" e descomentar as linhas 97 e 120.
+# no "for" da linha 82. Para realizar esse plot, primeiro é necessário instalar 
+# a biblioteca "matplotlib" e descomentar as linhas 91 e 114.
 
 import matplotlib.pyplot as plt
 
 # Plotando os pontos 
-plt.plot(xx, yy)
+plt.plot(v, p)
   
 # Dando nome ao eixo X
 plt.xlabel('Eixo x')
